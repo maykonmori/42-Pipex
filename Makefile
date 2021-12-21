@@ -9,11 +9,14 @@ SRC =	$(addprefix $(FOLDER), \
 		forkcp.c \
 		execpath.c \
 		error.c \
-		freem.c)
+		freem.c \
+		init.c)
 
 OBJS	= ${SRC:%.c=%.o}
 
 CC = gcc
+
+CFLAGS = -g
 
 LIBFT = ./libft/libft.a
 

@@ -3,37 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   forkcp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
+/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:26:59 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/15 20:52:15 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:37:14 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	parent_proc(char **argv, char **penv, int *fd)
+void	parent_proc(t_pipex *data)
 {
-	int		outf;
-
-	outf = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (outf < 0)
-		error();
-	dup2(fd[0], STDIN_FILENO);
-	dup2(outf, STDOUT_FILENO);
-	close(fd[1]);
-	get_exec(argv[3], penv);
+	data->outf = open(data->args.argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (data->outf < 0)
+		error(EXIT_FAILURE);
+	dup2(data->args.fd[0], STDIN_FILENO);
+	dup2(data->outf, STDOUT_FILENO);
+	close(data->args.fd[1]);
+	handling_arg(data, 3);
+	get_exec(data->args.argv[3], data);
 }
 
-void	child_proc(char **argv, char **penv, int *fd)
+void	child_proc(t_pipex *data)
 {
-	int		inputf;
-
-	inputf = open(argv[1], O_RDONLY);
-	if (inputf < 0)
-		error();
-	dup2(inputf, STDIN_FILENO);
-	dup2(fd[1], STDOUT_FILENO);
-	close(fd[0]);
-	get_exec(argv[2], penv);
+	data->inputf = open(data->args.argv[1], O_RDONLY);
+	if (data->inputf < 0)
+		error(EXIT_FAILURE);
+	dup2(data->inputf, STDIN_FILENO);
+	dup2(data->args.fd[1], STDOUT_FILENO);
+	close(data->args.fd[0]);
+	handling_arg(data, 2);
+	get_exec(data->args.argv[2], data);
 }

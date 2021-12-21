@@ -3,14 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   execpath.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
+/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:25:53 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/15 21:02:07 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:47:16 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
+
+void	handling_arg(t_pipex *data, int nargv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->args.argv[nargv][i])
+	{
+		if (data->args.argv[nargv][i] == '\'')
+		{
+			j = i + 1;
+			while (data->args.argv[nargv][j] == ' ')
+			{
+				data->args.argv[nargv][j] = '`';
+				j++;
+			}
+			return ;
+		}
+		i++;
+	}
+	return ;
+}
+
+void	return_space(char **command)
+{
+	int		i;
+	int		j;
+	char	*temp;
+
+	i = -1;
+	while (command[++i])
+	{
+		j = -1;
+		while (command[i][++j])
+		{
+			if (command[i][j] == '`')
+			{
+				while (command[i][j] == '`')
+				{
+					command[i][j] = ' ';
+					j++;
+				}
+				temp = ft_strdup(command[i]);
+				free(command[i]);
+				command[i] = ft_strtrim(temp, "\'");
+				free(temp);
+				return ;
+			}
+		}
+	}
+}
 
 char	*command_path(char *cmd)
 {
@@ -36,11 +88,17 @@ char	*command_path(char *cmd)
 	return (NULL);
 }
 
-void	get_exec(char *argv, char **penv)
+void	get_exec(char *argv, t_pipex *data)
 {
 	char	**command;
 
 	command = ft_split(argv, ' ');
-	if (execve(command_path(command[0]), command, penv) < 0)
-		error();
+	return_space(command);
+	if (command_path(command[0]) == NULL)
+	{
+		free_matriz(command);
+		error_nfound(127);
+	}
+	else
+		execve(command_path(command[0]), command, data->args.envp);
 }
