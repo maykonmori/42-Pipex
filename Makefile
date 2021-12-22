@@ -16,7 +16,7 @@ OBJS	= ${SRC:%.c=%.o}
 
 CC = gcc
 
-CFLAGS = -g
+CFLAGS = -Wextra -Werror -Wall -g
 
 LIBFT = ./libft/libft.a
 
@@ -40,3 +40,5 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+# -fsanitize=leak

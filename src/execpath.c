@@ -6,7 +6,7 @@
 /*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:25:53 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/21 18:47:16 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2021/12/22 21:02:12 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	return_space(char **command)
 char	*command_path(char *cmd)
 {
 	char	**path;
-	char	*path_proc;
 	char	*temp;
 	int		i;
 
@@ -94,11 +93,9 @@ void	get_exec(char *argv, t_pipex *data)
 
 	command = ft_split(argv, ' ');
 	return_space(command);
-	if (command_path(command[0]) == NULL)
+	if (execve(command_path(command[0]), command, data->args.envp) < 0)
 	{
 		free_matriz(command);
 		error_nfound(127);
 	}
-	else
-		execve(command_path(command[0]), command, data->args.envp);
 }

@@ -6,7 +6,7 @@
 /*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:30:44 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/21 18:46:47 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2021/12/22 16:58:56 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_args
 	int		fd[2];
 	char	**argv;
 	char	**envp;
+	int		wstatus;
 }	t_args;
 
 typedef struct s_space
@@ -43,12 +44,12 @@ typedef struct s_pipex
 	int		outf;
 	t_space	space;
 	t_args	args;
-	pid_t	child;
+	pid_t	pid;
 
 }	t_pipex;
 
 void	init_args(int argc, char **argv, char **envp, t_pipex *data);
-void	error_ar(char *s, int n);
+void	error_arg(int argc);
 void	error(int e);
 void	error_nfound(int e);
 void	free_matriz(char **s);
