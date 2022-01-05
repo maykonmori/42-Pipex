@@ -2,7 +2,20 @@ NAME =	pipex
 
 HEADER =	pipex.h
 
+INCLUDE = -I ./
+
 FOLDER =	./src/
+
+FOLDER2 = ./utils/
+
+UTILS = $(addprefix $(FOLDER2), \
+		ft_split.c\
+		ft_strdup.c\
+		ft_strlcpy.c\
+		ft_strjoin.c\
+		ft_bzero.c\
+		ft_strlen.c\
+		ft_strtrim.c)
 
 SRC =	$(addprefix $(FOLDER), \
 		pipex.c \
@@ -12,32 +25,29 @@ SRC =	$(addprefix $(FOLDER), \
 		freem.c \
 		init.c)
 
-OBJS	= ${SRC:%.c=%.o}
 
-CC = gcc
+
+
+OBJS	= ${SRC:%.c=%.o} ${UTILS:%.c=%.o}
+
+CC = clang
 
 CFLAGS = -Wextra -Werror -Wall -g
 
-LIBFT = ./libft/libft.a
-
 .c.o:
-	@$(CC) $(CFLAGS) -lmlx -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 all:$(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	@rm -f $(NAME)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
-
-$(LIBFT):
-	@make -C ./libft
+$(NAME): $(OBJS)
+	rm -f $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	@rm -f $(OBJS) $(OBJS_BONUS)
-	@make clean -C ./libft
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

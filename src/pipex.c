@@ -6,11 +6,11 @@
 /*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:26:56 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/22 21:26:23 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/05 14:23:57 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
 void	pipex(t_pipex	*data)
 {

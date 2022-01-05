@@ -6,7 +6,7 @@
 /*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:30:44 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/22 16:58:56 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/05 15:39:14 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <fcntl.h>
-# include "./libft/libft.h"
 
 # define PATH "/usr/local/sbin/:/usr/local/bin/:/usr/sbin/:/usr/bin/:/sbin/:/\
 bin/:/usr/games/:/usr/local/games/:/snap/bin/"
@@ -60,5 +59,14 @@ void	pipex(t_pipex	*data);
 void	get_exec(char *argv, t_pipex *data);
 void	handling_arg(t_pipex *data, int nargv);
 void	return_space(char **command);
+
+// --------------utils-----------------
+char	*ft_strdup(char *s);
+char	**ft_split(char *s, char c);
+char	*ft_strjoin(char *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+void	ft_bzero(void *s, size_t n);
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif

@@ -3,29 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 08:54:12 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/07 18:11:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/01/05 15:10:33 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-static size_t	str_quantity(char *str, char del);
-static void		complement_split(char *s, char c, char **arr);
-
-char	**ft_split(char *s, char c)
+static void	*ft_calloc(size_t num, size_t size)
 {
-	char	**arr;
+	size_t	aux;
+	void	*c;
 
-	if (!s)
-		return (NULL);
-	arr = (char **)ft_calloc(str_quantity(s, c) + 1, sizeof(char *));
-	if (!arr)
-		return (NULL);
-	complement_split(s, c, arr);
-	return (arr);
+	aux = num * size;
+	c = malloc(aux);
+	if (!c)
+		return (0);
+	ft_bzero(c, aux);
+	return (c);
 }
 
 static void	complement_split(char *s, char c, char **arr)
@@ -79,3 +76,18 @@ static size_t	str_quantity(char *str, char del)
 	}
 	return (qstr);
 }
+
+char	**ft_split(char *s, char c)
+{
+	char	**arr;
+
+	if (!s)
+		return (NULL);
+	arr = (char **)ft_calloc(str_quantity(s, c) + 1, sizeof(char *));
+	if (!arr)
+		return (NULL);
+	complement_split(s, c, arr);
+	return (arr);
+}
+
+

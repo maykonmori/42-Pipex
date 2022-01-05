@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 20:17:15 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/08/30 18:26:36 by mjose-ye         ###   ########.fr       */
+/*   Created: 2021/08/23 21:38:18 by mjose-ye          #+#    #+#             */
+/*   Updated: 2022/01/05 14:47:40 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-int	ft_isalnum(int c)
+size_t	ft_strlen(const char *str)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	else if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	size_t	aux;
+
+	aux = 0;
+	while (str[aux] != '\0')
+	{
+		aux++;
+	}
+	return (aux);
 }

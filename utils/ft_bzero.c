@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 20:59:28 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/08/30 18:48:27 by mjose-ye         ###   ########.fr       */
+/*   Created: 2021/08/24 22:41:38 by mjose-ye          #+#    #+#             */
+/*   Updated: 2022/01/05 15:02:26 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-int	ft_isprint(int c)
+static void	*ft_memset(void *s, int c, size_t len)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	size_t	aux;
+	char	*t;
+
+	t = s;
+	aux = 0;
+	while (aux < len)
+	{
+		t[aux] = c;
+		aux++;
+	}
+	return (t);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
 }
