@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execpath.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
+/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:25:53 by mjose-ye          #+#    #+#             */
-/*   Updated: 2022/01/05 20:43:47 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:46:38 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	handling_arg(t_pipex *data, int nargv)
 		if (data->args.argv[nargv][i] == '\'')
 		{
 			j = i + 1;
-			while (data->args.argv[nargv][j] == ' ')
+			while (data->args.argv[nargv][j] != '\'')
 			{
-				data->args.argv[nargv][j] = '`';
+				if (data->args.argv[nargv][j] == ' ')
+					data->args.argv[nargv][j] = '`';
 				j++;
 			}
 			return ;
@@ -70,6 +71,8 @@ char	*command_path(char *cmd)
 	char	*temp;
 	int		i;
 
+	if (cmd == NULL)
+		return (NULL);
 	path = ft_split(PATH, ':');
 	i = 0;
 	while (path[i])
@@ -90,12 +93,19 @@ char	*command_path(char *cmd)
 void	get_exec(char *argv, t_pipex *data)
 {
 	char	**command;
+	char	*return_command;
 
 	command = ft_split(argv, ' ');
 	return_space(command);
-	if (execve(command_path(command[0]), command, data->args.envp) < 0)
+	return_command = command_path(command[0]);
+	if (execve(return_command, command, data->args.envp) < 0)
 	{
 		free_matriz(command);
 		error_nfound(127);
+	}
+	if (return_command == NULL)
+	{
+		free_matriz(command);
+		error(127);
 	}
 }

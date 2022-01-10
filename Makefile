@@ -40,7 +40,6 @@ CFLAGS = -Wextra -Werror -Wall -g
 all:$(NAME)
 
 $(NAME): $(OBJS)
-	rm -f $(NAME)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
