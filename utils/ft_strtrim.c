@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 21:51:15 by mjose-ye          #+#    #+#             */
-/*   Updated: 2022/01/05 15:37:19 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:35:36 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static char	*ft_strchr(const char *str, int n)
 		return ((char *)str + cont);
 	return (0);
 }
-
 
 static char	*ft_strrchr(const char *str, int c)
 {

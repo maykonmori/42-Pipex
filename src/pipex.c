@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:26:56 by mjose-ye          #+#    #+#             */
-/*   Updated: 2022/01/05 14:23:57 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/06 00:58:46 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int	main(int argc, char **argv, char **envp)
 	t_pipex	data;
 
 	if (argc != 5)
-	{
 		error_arg(argc);
-	}
 	else
 	{
 		init_args(argc, argv, envp, &data);

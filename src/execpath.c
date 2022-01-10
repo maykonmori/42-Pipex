@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execpath.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:25:53 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/22 21:02:12 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/05 20:43:47 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
 void	handling_arg(t_pipex *data, int nargv)
 {

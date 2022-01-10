@@ -6,11 +6,11 @@
 /*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:24:51 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/15 20:24:52 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/05 20:43:41 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
 void	free_matriz(char **s)
 {

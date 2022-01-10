@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 08:54:12 by mjose-ye          #+#    #+#             */
-/*   Updated: 2022/01/05 15:10:33 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:36:04 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,3 @@ char	**ft_split(char *s, char c)
 	complement_split(s, c, arr);
 	return (arr);
 }
-
-

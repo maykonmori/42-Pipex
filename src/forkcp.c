@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   forkcp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose-ye <mjose-ye@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mjose-ye <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:26:59 by mjose-ye          #+#    #+#             */
-/*   Updated: 2021/12/21 18:37:14 by mjose-ye         ###   ########.fr       */
+/*   Updated: 2022/01/05 20:43:45 by mjose-ye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
 void	parent_proc(t_pipex *data)
 {
